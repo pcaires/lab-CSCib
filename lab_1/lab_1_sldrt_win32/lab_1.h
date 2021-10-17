@@ -3,9 +3,9 @@
  *
  * Code generation for model "lab_1".
  *
- * Model version              : 1.4
+ * Model version              : 1.5
  * Simulink Coder version : 8.8 (R2015a) 09-Feb-2015
- * C source code generated on : Thu Sep 30 13:12:03 2021
+ * C source code generated on : Thu Oct 14 12:02:21 2021
  *
  * Target selection: rtwin.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -16,6 +16,7 @@
 
 #ifndef RTW_HEADER_lab_1_h_
 #define RTW_HEADER_lab_1_h_
+#include <math.h>
 #include <string.h>
 #ifndef lab_1_COMMON_INCLUDES_
 # define lab_1_COMMON_INCLUDES_
@@ -573,11 +574,11 @@
 #endif
 
 #ifndef rtmGetTaskCounters
-# define rtmGetTaskCounters(rtm)       ()
+# define rtmGetTaskCounters(rtm)       ((rtm)->Timing.TaskCounters)
 #endif
 
 #ifndef rtmSetTaskCounters
-# define rtmSetTaskCounters(rtm, val)  ()
+# define rtmSetTaskCounters(rtm, val)  ((rtm)->Timing.TaskCounters = (val))
 #endif
 
 #ifndef rtmGetTaskTimeArray
@@ -717,7 +718,7 @@
 #endif
 
 #ifndef rtmIsContinuousTask
-# define rtmIsContinuousTask(rtm, tid) ((tid) == 0)
+# define rtmIsContinuousTask(rtm, tid) ((tid) <= 1)
 #endif
 
 #ifndef rtmGetErrorStatus
@@ -737,7 +738,11 @@
 #endif
 
 #ifndef rtmIsSampleHit
-# define rtmIsSampleHit(rtm, sti, tid) ((rtmIsMajorTimeStep((rtm)) && (rtm)->Timing.sampleHits[(rtm)->Timing.sampleTimeTaskIDPtr[sti]]))
+# define rtmIsSampleHit(rtm, sti, tid) (((rtm)->Timing.sampleTimeTaskIDPtr[sti] == (tid)))
+#endif
+
+#ifndef rtmStepTask
+# define rtmStepTask(rtm, idx)         ((rtm)->Timing.TaskCounters.TID[(idx)] == 0)
 #endif
 
 #ifndef rtmGetStopRequested
@@ -784,6 +789,10 @@
 # define rtmSetTStart(rtm, val)        ((rtm)->Timing.tStart = (val))
 #endif
 
+#ifndef rtmTaskCounter
+# define rtmTaskCounter(rtm, idx)      ((rtm)->Timing.TaskCounters.TID[(idx)])
+#endif
+
 #ifndef rtmGetTaskTime
 # define rtmGetTaskTime(rtm, sti)      (rtmGetTPtr((rtm))[(rtm)->Timing.sampleTimeTaskIDPtr[sti]])
 #endif
@@ -807,7 +816,7 @@
 
 /* Block signals (auto storage) */
 typedef struct {
-  real_T Step;                         /* '<Root>/Step' */
+  real_T SignalGenerator;              /* '<Root>/Signal Generator' */
   real_T AnalogInput;                  /* '<Root>/Analog Input' */
   real_T AnalogInput1;                 /* '<Root>/Analog Input1' */
 } B_lab_1_T;
@@ -891,14 +900,11 @@ struct P_lab_1_T_ {
   int32_T AnalogInput1_VoltRange;      /* Mask Parameter: AnalogInput1_VoltRange
                                         * Referenced by: '<Root>/Analog Input1'
                                         */
-  real_T Step_Time;                    /* Expression: 1
-                                        * Referenced by: '<Root>/Step'
+  real_T SignalGenerator_Amplitude;    /* Expression: 1
+                                        * Referenced by: '<Root>/Signal Generator'
                                         */
-  real_T Step_Y0;                      /* Expression: 0
-                                        * Referenced by: '<Root>/Step'
-                                        */
-  real_T Step_YFinal;                  /* Expression: 1
-                                        * Referenced by: '<Root>/Step'
+  real_T SignalGenerator_Frequency;    /* Expression: 0.5
+                                        * Referenced by: '<Root>/Signal Generator'
                                         */
 };
 
@@ -988,6 +994,13 @@ struct tag_RTM_lab_1_T {
     uint32_T clockTick1;
     uint32_T clockTickH1;
     time_T stepSize1;
+    uint32_T clockTick2;
+    uint32_T clockTickH2;
+    time_T stepSize2;
+    struct {
+      uint8_T TID[3];
+    } TaskCounters;
+
     time_T tStart;
     time_T tFinal;
     time_T timeOfLastOutput;
@@ -1001,12 +1014,12 @@ struct tag_RTM_lab_1_T {
     int_T *sampleHits;
     int_T *perTaskSampleHits;
     time_T *t;
-    time_T sampleTimesArray[2];
-    time_T offsetTimesArray[2];
-    int_T sampleTimeTaskIDArray[2];
-    int_T sampleHitArray[2];
-    int_T perTaskSampleHitsArray[4];
-    time_T tArray[2];
+    time_T sampleTimesArray[3];
+    time_T offsetTimesArray[3];
+    int_T sampleTimeTaskIDArray[3];
+    int_T sampleHitArray[3];
+    int_T perTaskSampleHitsArray[9];
+    time_T tArray[3];
   } Timing;
 };
 
@@ -1019,10 +1032,16 @@ extern B_lab_1_T lab_1_B;
 /* Block states (auto storage) */
 extern DW_lab_1_T lab_1_DW;
 
+/* External function called from main */
+extern time_T rt_SimUpdateDiscreteEvents(
+  int_T rtmNumSampTimes, void *rtmTimingData, int_T *rtmSampleHitPtr, int_T
+  *rtmPerTaskSampleHits )
+  ;
+
 /* Model entry point functions */
 extern void lab_1_initialize(void);
-extern void lab_1_output(void);
-extern void lab_1_update(void);
+extern void lab_1_output(int_T tid);
+extern void lab_1_update(int_T tid);
 extern void lab_1_terminate(void);
 
 /*====================*

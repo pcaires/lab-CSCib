@@ -110,20 +110,16 @@
       paramMap.sections(2) = section;
       clear section
       
-      section.nData     = 3;
-      section.data(3)  = dumData; %prealloc
+      section.nData     = 2;
+      section.data(2)  = dumData; %prealloc
       
-	  ;% lab_1_P.Step_Time
+	  ;% lab_1_P.SignalGenerator_Amplitude
 	  section.data(1).logicalSrcIdx = 17;
 	  section.data(1).dtTransOffset = 0;
 	
-	  ;% lab_1_P.Step_Y0
+	  ;% lab_1_P.SignalGenerator_Frequency
 	  section.data(2).logicalSrcIdx = 18;
 	  section.data(2).dtTransOffset = 1;
-	
-	  ;% lab_1_P.Step_YFinal
-	  section.data(3).logicalSrcIdx = 19;
-	  section.data(3).dtTransOffset = 2;
 	
       nTotData = nTotData + section.nData;
       paramMap.sections(3) = section;
@@ -173,7 +169,7 @@
       section.nData     = 3;
       section.data(3)  = dumData; %prealloc
       
-	  ;% lab_1_B.Step
+	  ;% lab_1_B.SignalGenerator
 	  section.data(1).logicalSrcIdx = 0;
 	  section.data(1).dtTransOffset = 0;
 	
@@ -287,8 +283,8 @@
   ;%
 
 
-  targMap.checksum0 = 1857537430;
-  targMap.checksum1 = 4045224934;
-  targMap.checksum2 = 3584197095;
-  targMap.checksum3 = 2695737935;
+  targMap.checksum0 = 3353435037;
+  targMap.checksum1 = 3595329057;
+  targMap.checksum2 = 2368430789;
+  targMap.checksum3 = 1131888656;
 

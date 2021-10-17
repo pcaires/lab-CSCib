@@ -3,9 +3,9 @@
  *
  * Code generation for model "lab_1".
  *
- * Model version              : 1.4
+ * Model version              : 1.5
  * Simulink Coder version : 8.8 (R2015a) 09-Feb-2015
- * C source code generated on : Thu Sep 30 13:12:03 2021
+ * C source code generated on : Thu Oct 14 12:02:21 2021
  *
  * Target selection: rtwin.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -71,12 +71,9 @@ P_lab_1_T lab_1_P = {
                                         * Referenced by: '<Root>/Analog Input1'
                                         */
   1.0,                                 /* Expression: 1
-                                        * Referenced by: '<Root>/Step'
+                                        * Referenced by: '<Root>/Signal Generator'
                                         */
-  0.0,                                 /* Expression: 0
-                                        * Referenced by: '<Root>/Step'
-                                        */
-  1.0                                  /* Expression: 1
-                                        * Referenced by: '<Root>/Step'
+  0.5                                  /* Expression: 0.5
+                                        * Referenced by: '<Root>/Signal Generator'
                                         */
 };

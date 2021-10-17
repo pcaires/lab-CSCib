@@ -1,11 +1,11 @@
 clear all
 
 load('lab_1_calpot.mat')
-kp = 360/(max(tensao_pot.signals.values)-min(tensao_pot.signals.values));
+kp = -360/(max(tensao_pot.signals.values)-min(tensao_pot.signals.values));
 
 
 load('lab_1_calext.mat')
-L = 25  %cm  %ENCONTRAR VALOR CERTO (18!!!)
+L = 38.1  %cm  %ENCONTRAR VALOR CERTO (18!!!)
 
 
 %           cm(pente)                  V
