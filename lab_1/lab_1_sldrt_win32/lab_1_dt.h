@@ -3,9 +3,9 @@
  *
  * Code generation for model "lab_1".
  *
- * Model version              : 1.5
+ * Model version              : 1.11
  * Simulink Coder version : 8.8 (R2015a) 09-Feb-2015
- * C source code generated on : Thu Oct 14 12:02:21 2021
+ * C source code generated on : Thu Oct 21 12:49:16 2021
  *
  * Target selection: rtwin.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -54,15 +54,17 @@ static const char_T * rtDataTypeNames[] = {
 
 /* data type transitions for block I/O structure */
 static DataTypeTransition rtBTransitions[] = {
-  { (char_T *)(&lab_1_B.SignalGenerator), 0, 0, 3 }
+  { (char_T *)(&lab_1_B.FromWorkspace), 0, 0, 3 }
   ,
 
-  { (char_T *)(&lab_1_DW.AnalogOutput_PWORK), 11, 0, 6 }
+  { (char_T *)(&lab_1_DW.FromWorkspace_PWORK.TimePtr), 11, 0, 7 },
+
+  { (char_T *)(&lab_1_DW.FromWorkspace_IWORK.PrevIndex), 10, 0, 1 }
 };
 
 /* data type transition table for block I/O structure */
 static DataTypeTransitionTable rtBTransTable = {
-  2U,
+  3U,
   rtBTransitions
 };
 
@@ -70,14 +72,12 @@ static DataTypeTransitionTable rtBTransTable = {
 static DataTypeTransition rtPTransitions[] = {
   { (char_T *)(&lab_1_P.AnalogOutput_FinalValue), 0, 0, 8 },
 
-  { (char_T *)(&lab_1_P.AnalogOutput_Channels), 6, 0, 9 },
-
-  { (char_T *)(&lab_1_P.SignalGenerator_Amplitude), 0, 0, 2 }
+  { (char_T *)(&lab_1_P.AnalogOutput_Channels), 6, 0, 9 }
 };
 
 /* data type transition table for Parameters structure */
 static DataTypeTransitionTable rtPTransTable = {
-  3U,
+  2U,
   rtPTransitions
 };
 

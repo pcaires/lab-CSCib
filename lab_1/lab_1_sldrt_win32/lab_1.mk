@@ -85,11 +85,11 @@ MATLAB_BIN           := C:/PROGRA~1/MATLAB/R2015a/bin
 S_FUNCTIONS          := 
 S_FUNCTIONS_LIB      := 
 SOLVER               := 
-NUMST                := 3
+NUMST                := 2
 TID01EQ              := 1
 NCSTATES             := 0
 BUILDARGS            :=  EXTMODE_STATIC_ALLOC=0 EXTMODE_STATIC_ALLOC_SIZE=1000000 TMW_EXTMODE_TESTING=0 ISPROTECTINGMODEL=NOTPROTECTING OPTS="-DON_TARGET_WAIT_FOR_START=1"
-MULTITASKING         := 1
+MULTITASKING         := 0
 EXT_MODE             := 1
 EXTMODE_TRANSPORT    := 0
 
@@ -157,7 +157,7 @@ REQ_INCLUDES := $(MATLAB_ROOT)/simulink/include;$(MATLAB_ROOT)/extern/include;$(
 REQ_INCLUDES += ;$(MATLAB_ROOT)/toolbox/shared/can/src/scanutil;$(SLDRTDIR)/src
 
 # additional includes
-REQ_INCLUDES += ;G:/lab-CSCib/lab_1/lab_1_sldrt_win32;G:/lab-CSCib/lab_1;$(MATLAB_ROOT)/rtw/c/src/ext_mode/common
+REQ_INCLUDES += ;H:/lab-CSCib/lab_1/lab_1_sldrt_win32;H:/lab-CSCib/lab_1;$(MATLAB_ROOT)/rtw/c/src/ext_mode/common
 
 # shared includes
 ifneq ($(SHARED_SRC_DIR),)

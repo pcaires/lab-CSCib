@@ -3,9 +3,9 @@
  *
  * Code generation for model "lab_1".
  *
- * Model version              : 1.5
+ * Model version              : 1.11
  * Simulink Coder version : 8.8 (R2015a) 09-Feb-2015
- * C source code generated on : Thu Oct 14 12:02:21 2021
+ * C source code generated on : Thu Oct 21 12:49:16 2021
  *
  * Target selection: rtwin.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -20,9 +20,12 @@
 #include "multiword_types.h"
 #include "zero_crossing_types.h"
 
-void lab_1_output0(void);
-void lab_1_update0(void);
-void lab_1_output2(void);
-void lab_1_update2(void);
+/* Used by FromWorkspace Block: '<Root>/From Workspace' */
+#ifndef rtInterpolate
+# define rtInterpolate(v1,v2,f1,f2)    (((v1)==(v2))?((double)(v1)): (((f1)*((double)(v1)))+((f2)*((double)(v2)))))
+#endif
 
+#ifndef rtRound
+# define rtRound(v)                    ( ((v) >= 0) ? floor((v) + 0.5) : ceil((v) - 0.5) )
+#endif
 #endif                                 /* RTW_HEADER_lab_1_private_h_ */

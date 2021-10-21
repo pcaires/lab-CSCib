@@ -5,7 +5,7 @@
   ;%***********************
       
     nTotData      = 0; %add to this count as we go
-    nTotSects     = 3;
+    nTotSects     = 2;
     sectIdxOffset = 0;
     
     ;%
@@ -110,21 +110,6 @@
       paramMap.sections(2) = section;
       clear section
       
-      section.nData     = 2;
-      section.data(2)  = dumData; %prealloc
-      
-	  ;% lab_1_P.SignalGenerator_Amplitude
-	  section.data(1).logicalSrcIdx = 17;
-	  section.data(1).dtTransOffset = 0;
-	
-	  ;% lab_1_P.SignalGenerator_Frequency
-	  section.data(2).logicalSrcIdx = 18;
-	  section.data(2).dtTransOffset = 1;
-	
-      nTotData = nTotData + section.nData;
-      paramMap.sections(3) = section;
-      clear section
-      
     
       ;%
       ;% Non-auto Data (parameter)
@@ -169,7 +154,7 @@
       section.nData     = 3;
       section.data(3)  = dumData; %prealloc
       
-	  ;% lab_1_B.SignalGenerator
+	  ;% lab_1_B.FromWorkspace
 	  section.data(1).logicalSrcIdx = 0;
 	  section.data(1).dtTransOffset = 0;
 	
@@ -203,7 +188,7 @@
   ;%*******************
       
     nTotData      = 0; %add to this count as we go
-    nTotSects     = 1;
+    nTotSects     = 2;
     sectIdxOffset = 1;
     
     ;%
@@ -226,35 +211,50 @@
     ;%
     ;% Auto data (lab_1_DW)
     ;%
-      section.nData     = 6;
-      section.data(6)  = dumData; %prealloc
+      section.nData     = 7;
+      section.data(7)  = dumData; %prealloc
       
-	  ;% lab_1_DW.AnalogOutput_PWORK
+	  ;% lab_1_DW.FromWorkspace_PWORK.TimePtr
 	  section.data(1).logicalSrcIdx = 0;
 	  section.data(1).dtTransOffset = 0;
 	
-	  ;% lab_1_DW.AnalogInput_PWORK
+	  ;% lab_1_DW.AnalogOutput_PWORK
 	  section.data(2).logicalSrcIdx = 1;
 	  section.data(2).dtTransOffset = 1;
 	
-	  ;% lab_1_DW.AnalogInput1_PWORK
+	  ;% lab_1_DW.AnalogInput_PWORK
 	  section.data(3).logicalSrcIdx = 2;
 	  section.data(3).dtTransOffset = 2;
 	
-	  ;% lab_1_DW.Scope1_PWORK.LoggedData
+	  ;% lab_1_DW.AnalogInput1_PWORK
 	  section.data(4).logicalSrcIdx = 3;
 	  section.data(4).dtTransOffset = 3;
 	
-	  ;% lab_1_DW.Scope2_PWORK.LoggedData
+	  ;% lab_1_DW.Scope1_PWORK.LoggedData
 	  section.data(5).logicalSrcIdx = 4;
 	  section.data(5).dtTransOffset = 4;
 	
-	  ;% lab_1_DW.Scope_PWORK.LoggedData
+	  ;% lab_1_DW.Scope2_PWORK.LoggedData
 	  section.data(6).logicalSrcIdx = 5;
 	  section.data(6).dtTransOffset = 5;
 	
+	  ;% lab_1_DW.Scope_PWORK.LoggedData
+	  section.data(7).logicalSrcIdx = 6;
+	  section.data(7).dtTransOffset = 6;
+	
       nTotData = nTotData + section.nData;
       dworkMap.sections(1) = section;
+      clear section
+      
+      section.nData     = 1;
+      section.data(1)  = dumData; %prealloc
+      
+	  ;% lab_1_DW.FromWorkspace_IWORK.PrevIndex
+	  section.data(1).logicalSrcIdx = 7;
+	  section.data(1).dtTransOffset = 0;
+	
+      nTotData = nTotData + section.nData;
+      dworkMap.sections(2) = section;
       clear section
       
     
@@ -283,8 +283,8 @@
   ;%
 
 
-  targMap.checksum0 = 3353435037;
-  targMap.checksum1 = 3595329057;
-  targMap.checksum2 = 2368430789;
-  targMap.checksum3 = 1131888656;
+  targMap.checksum0 = 3109579007;
+  targMap.checksum1 = 4035891963;
+  targMap.checksum2 = 786928964;
+  targMap.checksum3 = 1341728592;
 
