@@ -230,11 +230,11 @@
 	  section.data(4).logicalSrcIdx = 3;
 	  section.data(4).dtTransOffset = 3;
 	
-	  ;% lab_1_DW.Scope1_PWORK.LoggedData
+	  ;% lab_1_DW.Scope2_PWORK.LoggedData
 	  section.data(5).logicalSrcIdx = 4;
 	  section.data(5).dtTransOffset = 4;
 	
-	  ;% lab_1_DW.Scope2_PWORK.LoggedData
+	  ;% lab_1_DW.Scope1_PWORK.LoggedData
 	  section.data(6).logicalSrcIdx = 5;
 	  section.data(6).dtTransOffset = 5;
 	
@@ -283,8 +283,8 @@
   ;%
 
 
-  targMap.checksum0 = 3109579007;
-  targMap.checksum1 = 4035891963;
-  targMap.checksum2 = 786928964;
-  targMap.checksum3 = 1341728592;
+  targMap.checksum0 = 416232562;
+  targMap.checksum1 = 1022069586;
+  targMap.checksum2 = 2438642894;
+  targMap.checksum3 = 83660271;
 
